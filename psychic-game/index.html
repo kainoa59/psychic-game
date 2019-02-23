@@ -1,0 +1,80 @@
+<!DOCTYPE <!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>The Psychic Game</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link rel="stylesheet" type="text/css" media="screen" href="main.css">
+    <script src="assets/Game.js"></script> -->
+</head>
+
+<body>
+    <div class=psychic>
+        <h1> The Psychic Game</h1>
+        <P> Guess what letter the computer is thinking</P>
+        <p> Wins: <span id="wins"></span></p>
+        <p> Losses: <span id="losses"></span></p>
+        <p> Guesses left: <span id="guessesLeft"></span></p>
+        <p> Letters you have guessed: <span id="guessesMade"></span></p>
+    </div>
+    <script>
+        var computerGuesses = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j",
+            "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z",];
+        var wins = 0;
+        var losses = 0;
+        var guessesLeft = 9;
+        var guessesMade = [23];
+
+        wins.textcontent = wins
+        losses.textcontent = losses
+        guessesLeft.textcontent = guessesLeft
+        guessesMade.textcontent = guessesMade
+
+        document.getElementById("guessesLeft").innerHTML = guessesLeft;
+
+
+        var computerGuess = computerGuesses[Math.floor(Math.random() * computerGuesses.length)];
+        console.log("computerGuess: ", computerGuess);
+
+        document.onkeyup = function (event) {
+
+
+            var userGuess = event.key;
+            console.log("userGuess: ", userGuess);
+
+            function guesses() {
+                guessesMade.push(userGuess);
+                document.getElementById("guessesMade").innerhtml = guessesMade;
+            }
+
+
+            // if ((userGuess === "a") || (userGuess === "b") || (userGuess === "c") || 
+            // (userGuess === "d") || (userGuess === "e") || (userGuess === "f") || 
+            // (userGuess === "g") || (userGuess === "h") || (userGuess === "i") || 
+            // (userGuess === "j") || (userGuess === "k") || (userGuess === "l") || 
+            // (userGuess === "m") || (userGuess === "n") || (userGuess === "o") || 
+            // (userGuess === "p") || (userGuess === "q") || (userGuess === "r") || 
+            // (userGuess === "s") || (userGuess === "t") || (userGuess === "u") || 
+            // (userGuess === "v") || (userGuess === "w") || (userGuess === "x") || 
+            // (userGuess === "y") || (userGuess === "z")) {
+            if (userGuess === computerGuess) {
+                wins++;
+                document.getElementById("wins").innerHTML = wins;
+                guessesLeft--;
+                console.log("wins: ", wins);
+                console.log("guessesLeft: ", guessesLeft);
+            }
+            else if (userGuess !== computerGuess) {
+                losses++;
+                document.getElementById("losses").innerHTML = losses;
+                guessesLeft--;
+            }
+
+        }
+        // }
+    </script>
+</body>
+
+</html>
